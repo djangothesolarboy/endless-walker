@@ -1,6 +1,6 @@
 -- timers
 canShoot = true
-canShootTimerMax = 0.5
+canShootTimerMax = 0.5 -- ←changes bullet speed
 canShootTimer = canShootTimerMax
 
 -- image storage

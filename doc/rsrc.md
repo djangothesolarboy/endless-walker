@@ -1,13 +1,10 @@
 ### big repo:
----
 - [resources](https://github.com/love2d-community/awesome-love2d#tutorials)
 
 ### lua cheatsheet:
----
 - [learn lua cheatsheet](https://learnxinyminutes.com/docs/lua/)
 
 ### for later:
----
 - [networking](https://rvagamejams.com/learn2love/pages/02-17-networking-part-1.html)
 - [sharing game](https://sheepolution.com/learn/book/15)
 
@@ -16,7 +13,6 @@
 - [youtube](https://www.youtube.com/watch?v=wttKHL90Ank)
 
 ### using:
----
 - [youtube p2](https://www.youtube.com/c/Challacade/videos)
 	- [camera](https://www.youtube.com/watch?v=F3zKl70RJlk)
 - [love docs](https://love2d.org/wiki/love)
