@@ -15,5 +15,5 @@
 
 [200 line game](http://osmstudios.com/page/your-first-love2d-game-in-200-lines-part-2-of-3)
 
-![[Lua shield](https://www.lua.org/docs.html)](https://tinyurl.com/lua-shield) 
-![[LÖVE shield](https://www.lua.org/docs.html)](https://tinyurl.com/love2d-shield) 
+[![Lua shield](https://tinyurl.com/lua-shield)](https://www.lua.org/docs.html) 
+[![LÖVE shield](https://tinyurl.com/love2d-shield)](https://love2d.org/wiki/Main_Page) 
