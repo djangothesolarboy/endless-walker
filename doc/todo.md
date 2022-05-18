@@ -10,8 +10,11 @@
 
 ### backlog
 ---
+- [ ] documentation
+- [ ] screenshots
 - [ ] controller support
+- [ ] build game *done*
 
 ### possible
 ---
-- [ ] 
+- [ ] make web build
