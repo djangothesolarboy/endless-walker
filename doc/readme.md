@@ -1,5 +1,5 @@
-[my ideas](/ideas.md)
-[resources](/rsrc.md)
+[my ideas](./ideas.md)
+[resources](./rsrc.md)
 
 ### DONE
 > *additional things may be added*ideally the game would have at least the following things:  
