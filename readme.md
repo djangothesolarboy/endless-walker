@@ -1,8 +1,8 @@
 # endless walker
 *by Damien*
 
-![gameplay gif](https://i.gyazo.com/cf8c12137b49075efc0ae6315484bd0c.gif)  
-*Game currently using placeholder image/s*
+![gameplay gif](https://i.gyazo.com/368d1b392b43aebcf5d0a168b1b510ac.gif)  
+*Game may be currently using placeholder asset/s*
 > a vampire survivors clone essentially, with its own differences. also a way to show how cool lua/love is for making games. a passion project. the goal is to create a full game.
 
 
