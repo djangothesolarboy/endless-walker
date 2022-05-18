@@ -1,0 +1,1 @@
+- see if you can use `Texture:setWrap(hor,vert,depth)` to make a parallax background? [love](https://love2d.org/wiki/Texture:setWrap)
