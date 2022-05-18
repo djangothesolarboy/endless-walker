@@ -1,13 +1,23 @@
 debug = true
 
 function love.load()
+	camera = require 'utils/camera'
 	require 'player'
 	require 'bullets'
-	player.img = love.graphics.newImage('img/sheep-0.png')
+	sti = require('utils/Simple-Tiled-Implementation/sti')
+	bgm = love.audio.newSource('snd/chrono-chip.mp3', 'stream')
+
+	cam = camera()
+	player.img = love.graphics.newImage('img/player-0.png')
 	bulletImg = love.graphics.newImage('img/bullet.png')
+	loadMap()
+	love.audio.setVolume(.1)
+	love.audio.play(bgm)
 end
 
 function love.update(dt)
+	gameMap:update(dt)
+	shoot = love.audio.newSource('snd/menu.wav', 'static')
 	-- time out bullets
 	canShootTimer = canShootTimer - (1 * dt)
 	if (canShootTimer < 0) then
@@ -17,12 +27,12 @@ function love.update(dt)
 	if love.keyboard.isDown('right', 'd') then
 		if player.x < (love.graphics.getWidth() - player.img:getWidth()) then
 			player.x = player.x + (player.speed * dt)
-			player.img = love.graphics.newImage('img/sheep-0.png')
+			player.img = love.graphics.newImage('img/player-0.png')
 		end
 	elseif love.keyboard.isDown('left', 'a') then
 		if player.x > 0 then
 			player.x = player.x - (player.speed * dt)
-			player.img = love.graphics.newImage('img/sheep-1.png')
+			player.img = love.graphics.newImage('img/player-1.png')
 		end
 	end
 	if love.keyboard.isDown('down', 's') then
@@ -44,6 +54,7 @@ function love.update(dt)
 		table.insert(bullets, newBullet)
 		canShoot = false
 		canShootTimer = canShootTimerMax
+		love.audio.play(shoot)
 	end
 
 	for i, bullet in ipairs(bullets) do
@@ -60,11 +71,14 @@ function love.update(dt)
 end
 
 function love.draw()
-	love.graphics.draw(player.img, player.x, player.y)
+	cam:attach()
+		gameMap:drawLayer(gameMap.layers['Tile Layer 1'])
+		love.graphics.draw(player.img, player.x, player.y)
 
-	for i, bullet in ipairs(bullets) do
-		love.graphics.draw(bullet.img, bullet.x, bullet.y)
-	end
+		for i, bullet in ipairs(bullets) do
+			love.graphics.draw(bullet.img, bullet.x, bullet.y)
+		end
+	cam:detach()
 end
 
 -- Fixed Delta Time loop
@@ -101,4 +115,8 @@ function love.run()
  
 		if love.timer then love.timer.sleep(0.001) end
 	end
+end
+
+function loadMap()
+	gameMap = sti('maps/map1.lua')
 end

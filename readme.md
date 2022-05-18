@@ -7,5 +7,10 @@
 
 
 ## tools used:
+- [camera hump](https://github.com/vrld/hump/)
+- [simple tiled implementation](https://github.com/karai17/Simple-Tiled-Implementation)
+- [tiled](https://www.mapeditor.org)
+
+## shields:  
 [![Lua shield](https://tinyurl.com/lua-shield)](https://www.lua.org/docs.html) 
 [![LÖVE shield](https://tinyurl.com/love2d-shield)](https://love2d.org/wiki/Main_Page) 

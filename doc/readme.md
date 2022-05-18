@@ -1,5 +1,5 @@
-[my ideas](./ideas.md)
-[resources](./rsrc.md)
+- [my ideas](./ideas.md)
+- [resources](./rsrc.md)
 
 ### DONE
 > *additional things may be added*ideally the game would have at least the following things:  
@@ -10,10 +10,13 @@
 - [ ] poe skill tree system
 
 ### current/working on
-- [ ] controls
+- [x] controls
 - [x] flip image on move
+- [ ] create camera basics
+- [ ] have camera follow player
 
-### definite/important
+### next
+- [ ] remove invisible window border for player
 - [ ] remove button attack  
 - [ ] make attack face direction (use a variable: `facing=false` then set true when button pressed)
 
