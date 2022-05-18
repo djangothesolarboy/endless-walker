@@ -17,6 +17,8 @@
 
 ### using:
 ---
+- [youtube p2](https://www.youtube.com/c/Challacade/videos)
+	- [camera](https://www.youtube.com/watch?v=F3zKl70RJlk)
 - [love docs](https://love2d.org/wiki/love)
 - [shep](https://sheepolution.com/learn/book/12)
 - [200 line game](http://osmstudios.com/page/your-first-love2d-game-in-200-lines-part-2-of-3)

@@ -3,7 +3,6 @@ debug = true
 function love.load()
 	require 'player'
 	require 'bullets'
-	-- require('img')
 	player.img = love.graphics.newImage('img/sheep-0.png')
 	bulletImg = love.graphics.newImage('img/bullet.png')
 end
