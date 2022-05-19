@@ -11,6 +11,7 @@
 - [class stuff](https://sheepolution.com/learn/book/24)
 - [steam game tut](https://github.com/a327ex/blog/issues/15)
 - [youtube](https://www.youtube.com/watch?v=wttKHL90Ank)
+- [downwell trail](https://github.com/a327ex/blog/issues/9)
 
 ### using:
 - [music](https://pixwlk.itch.io/petaporon)

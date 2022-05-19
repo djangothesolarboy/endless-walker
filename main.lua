@@ -2,24 +2,27 @@ debug = true
 local input = require 'input'
 
 function love.load()
+	love.graphics.setDefaultFilter('nearest')
 	camera = require 'libs/hump/camera'
 	Timer = require 'libs/hump/timer'
 	require 'player'
 	require 'bullets'
 	sti = require 'libs/Simple-Tiled-Implementation/sti'
 	Object = require 'libs/classic/classic'
+
 	controller = nil
 	rooms = {}
 	current_room = nil
-
+	resize(2)
 	bgm = love.audio.newSource('snds/chrono-chip.mp3', 'stream')
 	cam = camera()
+	input:bind('f3', function () camera:shake(4, 60, 1) end)
 	player.img = love.graphics.newImage('imgs/player-0.png')
 	bulletImg = love.graphics.newImage('imgs/bullet.png')
 	loadMap()
 	timer = Timer()
 	love.audio.setVolume(.1)
-	love.audio.play(bgm)
+	-- love.audio.play(bgm)
 
 	local joysticks = love.joystick.getJoysticks()
     for i, joystick in ipairs(joysticks) do
@@ -32,7 +35,6 @@ end
 function love.update(dt)
 	timer:update(dt)
 	gameMap:update(dt)
-	shoot = love.audio.newSource('snds/menu.wav', 'static')
 	-- time out bullets
 	canShootTimer = canShootTimer - (1 * dt)
 	if (canShootTimer < 0) then
@@ -57,6 +59,9 @@ function love.update(dt)
 end
 
 function love.draw()
+	version_text = 'v0.1'
+	love.graphics.setColor(250, 250, 250)
+	love.graphics.print(version_text, 250, 250, 0, 2, 2)
 	cam:attach()
 		if current_room then current_room:draw(dt) end
 		gameMap:drawLayer(gameMap.layers['Tile Layer 1'])
@@ -120,4 +125,9 @@ function goToRoom(room_type, room_name, ...)
 		current_room = rooms[room_name]
 		if current_room.activate then current_room:activate() end
 	else current_room = addRoom(room_type, room_name, ...) end
+end
+
+function resize(s)
+	love.window.setMode(s*gw, s*gh)
+	sx, sy = s, s
 end

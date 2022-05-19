@@ -6,6 +6,8 @@ require 'bullets'
 --------------------------------------------------------------------------------
 
 function input.keyboard(player,dt)
+	shoot = love.audio.newSource('snds/menu.wav', 'static')
+
     if love.keyboard.isDown('escape') then
         love.event.push('quit')
     end
@@ -35,7 +37,7 @@ function input.keyboard(player,dt)
 		table.insert(bullets, newBullet)
 		canShoot = false
 		canShootTimer = canShootTimerMax
-		-- love.audio.play(shoot)
+		love.audio.play(shoot)
 	end
 
 	--! todo - find way to restart
@@ -52,6 +54,8 @@ function input.gamepad(player, dt, controller)
     if controller:isGamepadDown('back') then
         love.event.push('quit')
     end
+    --! todo: get map of buttons
+    	--! todo: add shoot button
     -- dpad
     if controller:isGamepadDown('dpleft') then
         if player.x>0 then

@@ -7,6 +7,9 @@
 
 If you'd like to checkout my progress, and an idea of where the game is/going, go [here](/doc/readme.md)
 
+## sprites:
+
+
 ## tools used:
 > links prefaced with `lib:` are the libraries in the projects `/libs` directory.  
 - [lib: hump](https://github.com/vrld/hump/)
