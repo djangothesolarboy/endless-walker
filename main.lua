@@ -1,15 +1,16 @@
 debug = true
 
 function love.load()
-	camera = require 'utils/camera'
+	camera = require 'libs/camera'
 	require 'player'
 	require 'bullets'
-	sti = require('utils/Simple-Tiled-Implementation/sti')
-	bgm = love.audio.newSource('snd/chrono-chip.mp3', 'stream')
+	sti = require('libs/Simple-Tiled-Implementation/sti')
+	Object = require 'libs/classic/classic'
 
+	bgm = love.audio.newSource('snds/chrono-chip.mp3', 'stream')
 	cam = camera()
-	player.img = love.graphics.newImage('img/player-0.png')
-	bulletImg = love.graphics.newImage('img/bullet.png')
+	player.img = love.graphics.newImage('imgs/player-0.png')
+	bulletImg = love.graphics.newImage('imgs/bullet.png')
 	loadMap()
 	love.audio.setVolume(.1)
 	love.audio.play(bgm)
@@ -17,7 +18,7 @@ end
 
 function love.update(dt)
 	gameMap:update(dt)
-	shoot = love.audio.newSource('snd/menu.wav', 'static')
+	shoot = love.audio.newSource('snds/menu.wav', 'static')
 	-- time out bullets
 	canShootTimer = canShootTimer - (1 * dt)
 	if (canShootTimer < 0) then
@@ -27,12 +28,14 @@ function love.update(dt)
 	if love.keyboard.isDown('right', 'd') then
 		if player.x < (love.graphics.getWidth() - player.img:getWidth()) then
 			player.x = player.x + (player.speed * dt)
-			player.img = love.graphics.newImage('img/player-0.png')
+			player.img = love.graphics.newImage('imgs/player-0.png')
+			player.direction = 1
 		end
 	elseif love.keyboard.isDown('left', 'a') then
 		if player.x > 0 then
 			player.x = player.x - (player.speed * dt)
-			player.img = love.graphics.newImage('img/player-1.png')
+			player.img = love.graphics.newImage('imgs/player-1.png')
+			player.direction = 2
 		end
 	end
 	if love.keyboard.isDown('down', 's') then
