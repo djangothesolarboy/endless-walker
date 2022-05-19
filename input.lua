@@ -15,10 +15,12 @@ function input.keyboard(player,dt)
     if love.keyboard.isDown('left','a') then
         if player.x>0 then -- binds player to map
             player.x=player.x-(player.speed*dt)
+            player.img = love.graphics.newImage('imgs/player-1.png')
         end
     elseif love.keyboard.isDown('right','d') then
         if player.x<(love.graphics.getWidth()-player.img:getWidth()) then
             player.x=player.x+(player.speed*dt)
+            player.img = love.graphics.newImage('imgs/player-0.png')
         end
     end
 

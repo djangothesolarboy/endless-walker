@@ -12,9 +12,11 @@ end
 function Stage:draw()
 	love.graphics.setCanvas(self.main_canvas)
 	love.graphics.clear()
+		cam:attach(0, 0, gw, gh)
 		love.graphics.setLineStyle('rough')
 		love.graphics.circle('line', gw/2, gh/2, 50)
 		self.area:draw()
+		cam:detach()
 	love.graphics.setCanvas()
 
 	love.graphics.setColor(255, 255, 255, 255)
