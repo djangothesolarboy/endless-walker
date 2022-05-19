@@ -16,6 +16,8 @@ function love.load()
 	resize(2)
 	bgm = love.audio.newSource('snds/chrono-chip.mp3', 'stream')
 	cam = camera()
+	if love.keyboard.isDown('f3') then cam:shake(4, 60, 1) end
+	-- input:bind('f3', function() camera:shake(4, 60, 1) end)
 	-- input:bind('f3', function () camera:shake(4, 60, 1) end)
 	player.img = love.graphics.newImage('imgs/player-0.png')
 	bulletImg = love.graphics.newImage('imgs/bullet.png')
@@ -41,9 +43,7 @@ function love.update(dt)
 		canShoot = true
 	end
 
-	-- if love.keyboard.isDown('f3') then cam:shake(4, 60, 1) end
-	input:bind('f3', function() camera:shake(4, 60, 1) end)
-
+	cam:update(dt)
 	input.keyboard(player, dt)
 	if joysticks then
 		input.gamepad(player, dt, controller)
