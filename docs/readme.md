@@ -16,6 +16,8 @@
 ### next
 - [ ] `pickup.lua`
 - [ ] `entity.lua`
+- [x] controller support
+	- [ ] remove shoot button
 - [ ] remove invisible window border for player
 - [ ] remove button attack  
 - [ ] make attack face direction (use a variable: `facing=false` then set true when button pressed)
@@ -23,7 +25,6 @@
 ### backlog
 - [ ] documentation
 - [ ] screenshots
-- [ ] controller support
 - [ ] build game *done*
 
 ### possible

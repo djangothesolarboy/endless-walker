@@ -13,6 +13,7 @@ If you'd like to checkout my progress, and an idea of where the game is/going, g
 - [tiled](https://www.mapeditor.org)
 - [`love.run`](https://github.com/a327ex/blog/issues/15)
 - [classic module](https://github.com/rxi/classic)
+- [util library](https://github.com/Yonaba/Moses)
 
 ## shields:  
 [![Lua shield](https://tinyurl.com/lua-shield)](https://www.lua.org/docs.html) 

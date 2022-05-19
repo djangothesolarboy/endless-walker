@@ -1,22 +1,34 @@
 debug = true
+local input = require 'input'
 
 function love.load()
-	camera = require 'libs/camera'
+	camera = require 'libs/hump/camera'
+	Timer = require 'libs/hump/timer'
 	require 'player'
 	require 'bullets'
-	sti = require('libs/Simple-Tiled-Implementation/sti')
+	sti = require 'libs/Simple-Tiled-Implementation/sti'
 	Object = require 'libs/classic/classic'
+	controller = nil
 
 	bgm = love.audio.newSource('snds/chrono-chip.mp3', 'stream')
 	cam = camera()
 	player.img = love.graphics.newImage('imgs/player-0.png')
 	bulletImg = love.graphics.newImage('imgs/bullet.png')
 	loadMap()
+	timer = Timer()
 	love.audio.setVolume(.1)
 	love.audio.play(bgm)
+
+	local joysticks = love.joystick.getJoysticks()
+    for i, joystick in ipairs(joysticks) do
+        love.graphics.print(joystick:getName(), 10, i*20)
+        controller = joystick
+        break
+    end
 end
 
 function love.update(dt)
+	timer:update(dt)
 	gameMap:update(dt)
 	shoot = love.audio.newSource('snds/menu.wav', 'static')
 	-- time out bullets
@@ -24,40 +36,10 @@ function love.update(dt)
 	if (canShootTimer < 0) then
 		canShoot = true
 	end
-	
-	if love.keyboard.isDown('right', 'd') then
-		if player.x < (love.graphics.getWidth() - player.img:getWidth()) then
-			player.x = player.x + (player.speed * dt)
-			player.img = love.graphics.newImage('imgs/player-0.png')
-			player.direction = 1
-		end
-	elseif love.keyboard.isDown('left', 'a') then
-		if player.x > 0 then
-			player.x = player.x - (player.speed * dt)
-			player.img = love.graphics.newImage('imgs/player-1.png')
-			player.direction = 2
-		end
-	end
-	if love.keyboard.isDown('down', 's') then
-		if player.y < (love.graphics.getHeight() - player.img:getHeight()) then
-			player.y = player.y + (player.speed * dt)
-		end
-	elseif love.keyboard.isDown('up', 'w') then
-		if player.y > 0 then
-			player.y = player.y - (player.speed * dt)
-		end
-	end
 
-	if love.keyboard.isDown('escape') then
-		love.event.push('quit')
-	end
-
-	if love.keyboard.isDown('space') and canShoot then
-		newBullet = { x = player.x + (player.img:getWidth()/2),y = player.y, img = bulletImg }
-		table.insert(bullets, newBullet)
-		canShoot = false
-		canShootTimer = canShootTimerMax
-		love.audio.play(shoot)
+	input.keyboard(player, dt)
+	if joysticks then
+		input.gamepad(player, dt, controller)
 	end
 
 	for i, bullet in ipairs(bullets) do
@@ -67,10 +49,7 @@ function love.update(dt)
 			table.remove(bullets, i)
 		end
 	end
-	--! todo - find way to restart 
-	-- if love.keyboard.isDown('r') then
-	-- 	love.run()
-	-- end
+
 end
 
 function love.draw()
