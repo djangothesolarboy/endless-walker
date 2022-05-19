@@ -9,6 +9,7 @@ function love.load()
 	sti = require 'libs/Simple-Tiled-Implementation/sti'
 	Object = require 'libs/classic/classic'
 	controller = nil
+	current_room = nil
 
 	bgm = love.audio.newSource('snds/chrono-chip.mp3', 'stream')
 	cam = camera()
@@ -42,6 +43,8 @@ function love.update(dt)
 		input.gamepad(player, dt, controller)
 	end
 
+	if current_room then current_room:update(dt) end
+
 	for i, bullet in ipairs(bullets) do
 		bullet.y = bullet.y - (250 * dt)
 
@@ -54,6 +57,7 @@ end
 
 function love.draw()
 	cam:attach()
+		if current_room then current_room:draw(dt) end
 		gameMap:drawLayer(gameMap.layers['Tile Layer 1'])
 		love.graphics.draw(player.img, player.x, player.y)
 
@@ -101,4 +105,8 @@ end
 
 function loadMap()
 	gameMap = sti('maps/map1.lua')
+end
+
+function goToRoom(room_type, ...)
+	current_room = _G[room_type](...)
 end
