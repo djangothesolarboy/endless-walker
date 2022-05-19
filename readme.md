@@ -13,6 +13,7 @@ If you'd like to checkout my progress, and an idea of where the game is/going, g
 - [lib: simple tiled implementation](https://github.com/karai17/Simple-Tiled-Implementation)
 - [lib: util library](https://github.com/Yonaba/Moses)
 - [lib: classic module](https://github.com/rxi/classic)
+- [lib: `lume.uuid`](https://github.com/rxi/lume)
 - [tiled](https://www.mapeditor.org)
 - [`love.run`](https://github.com/a327ex/blog/issues/15)
 

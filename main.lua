@@ -9,6 +9,7 @@ function love.load()
 	sti = require 'libs/Simple-Tiled-Implementation/sti'
 	Object = require 'libs/classic/classic'
 	controller = nil
+	rooms = {}
 	current_room = nil
 
 	bgm = love.audio.newSource('snds/chrono-chip.mp3', 'stream')
@@ -107,6 +108,16 @@ function loadMap()
 	gameMap = sti('maps/map1.lua')
 end
 
-function goToRoom(room_type, ...)
-	current_room = _G[room_type](...)
+function addRoom(room_type, room_name, ...)
+	local room = _G[room_type](room_name, ...)
+	rooms[room_name] = room
+	return room
+end
+
+function goToRoom(room_type, room_name, ...)
+	if current_room and rooms[room_name] then
+		if current_room.deactivate then current_room:deactivate() end
+		current_room = rooms[room_name]
+		if current_room.activate then current_room:activate() end
+	else current_room = addRoom(room_type, room_name, ...) end
 end
