@@ -24,6 +24,7 @@
 - [love docs](https://love2d.org/wiki/love)
 - [shep](https://sheepolution.com/learn/book/12)
 - [200 line game](http://osmstudios.com/page/your-first-love2d-game-in-200-lines-part-2-of-3)
+- [](https://gamedev.stackexchange.com/questions/27341/how-do-i-change-a-lÖve2d-game-executables-icon/121947#121947)
 
 ### used:
 - [simple tile imple](https://github.com/karai17/Simple-Tiled-Implementation)

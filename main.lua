@@ -1,31 +1,35 @@
-debug = true
-local input = require 'input'
+Object = require 'libs/classic/classic'
+Input = require 'libs/boipushy/Input'
+Camera = require 'libs/hump/camera'
+Timer = require 'libs/hump/timer'
+sti = require 'libs/Simple-Tiled-Implementation/sti'
+require 'player'
+require 'bullets'
+require 'utils'
+require 'objs/gameobject'
+require 'input'
 
 function love.load()
 	love.graphics.setDefaultFilter('nearest')
-	camera = require 'libs/hump/camera'
-	Timer = require 'libs/hump/timer'
-	require 'player'
-	require 'bullets'
-	sti = require 'libs/Simple-Tiled-Implementation/sti'
-	Object = require 'libs/classic/classic'
+	-- shake = require 'objs/Shake'
+	cam = Camera()
+	input = Input()
+	timer = Timer()
 
-	controller = nil
+	input:bind('left', 'left')
+	input:bind('right','right')
+
+	controllerl = nil
 	rooms = {}
 	current_room = nil
 	resize(2)
 	bgm = love.audio.newSource('snds/chrono-chip.mp3', 'stream')
-	cam = camera()
-	if love.keyboard.isDown('f3') then cam:shake(4, 60, 1) end
-	-- input:bind('f3', function() camera:shake(4, 60, 1) end)
-	-- input:bind('f3', function () camera:shake(4, 60, 1) end)
+	input:bind('f3', function () cam:shake(4, 60, 1) end)
 	player.img = love.graphics.newImage('imgs/player-0.png')
 	bulletImg = love.graphics.newImage('imgs/bullet.png')
 	loadMap()
-	timer = Timer()
 	love.audio.setVolume(.1)
 	-- love.audio.play(bgm)
-
 	local joysticks = love.joystick.getJoysticks()
     for i, joystick in ipairs(joysticks) do
         love.graphics.print(joystick:getName(), 10, i*20)
@@ -44,9 +48,9 @@ function love.update(dt)
 	end
 
 	cam:update(dt)
-	input.keyboard(player, dt)
+	input_.keyboard(player, dt)
 	if joysticks then
-		input.gamepad(player, dt, controller)
+		input_.gamepad(player, dt, controller)
 	end
 
 	if current_room then current_room:update(dt) end

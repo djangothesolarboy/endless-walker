@@ -1,11 +1,11 @@
-local input = {}
+input_ = {}
 require 'bullets'
 
 --------------------------------------------------------------------------------
 --                             KEYBOARD CONTROLS                              --
 --------------------------------------------------------------------------------
 
-function input.keyboard(player,dt)
+function input_.keyboard(player,dt)
 	shoot = love.audio.newSource('snds/menu.wav', 'static')
 
     if love.keyboard.isDown('escape') then
@@ -52,7 +52,7 @@ end
 --                             CONTROLLER SUPPORT                             --
 --------------------------------------------------------------------------------
 
-function input.gamepad(player, dt, controller)
+function input_.gamepad(player, dt, controller)
     if controller:isGamepadDown('back') then
         love.event.push('quit')
     end
